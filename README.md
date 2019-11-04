@@ -21,15 +21,16 @@ some other item to play.  But for now I close the detail page when returning to 
 I also implemented the Stretch Goal of loading further parts of the list
 for seamless navigation of all of the (currently) 744 program entries.
 This proved much easier than I had assumed.
-RecyclerView in basic usage takes care of view recycling.
-I did not have to venture into detail paging management.
+RecyclerView in basic usage takes care of view recycling from a fixed data buffer.
+I did not have to venture into detail paging management although that is possible
+in case of very large datasets.
 The major app memory usage comes from inflated images and list entries,
 while the "raw data" from the SR Open API is text based.
-So I went for loading ALL of the program entries
+So I went for loading ALL of the currently 744 program entries
 into the Android device and RecyclerView takes care of
-managing views within a size of 40 entries.
+managing views within a given limit of 40 entries.
 I see no performance issues with this.
-I added a list scroll bar to cope with the 744 programs.
+I added a list scroll bar for quicker navigation.
 
 One idea I left out was it would be worthwhile to have a search function into the
 program information text.  It would help finding interesting radio programs quicker.
@@ -38,5 +39,14 @@ One could load the SR data into a database and do interesting searches.
 I also would have spent time on accomplishing an animation feature in the list
 so that when scrolling stops then as many rows as fit from program information text would fade in
 below the headline (program name) of each list entry.
+
+How to fetch the project and load/run it with Android Studio:
+
+cd ~/srprograms
+git clone https://github.com/mobimation/SwedishRadioPrograms.git
+
+In Android Studio, open project  ~/srprograms/SwedishRadioPrograms
+Connect devices or run emulators.
+
 
 /gunnar  +46 760 315300
