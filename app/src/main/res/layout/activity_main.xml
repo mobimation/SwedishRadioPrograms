@@ -6,13 +6,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbarSize="50dip"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:scrollbarSize="18dp"
         android:scrollbarStyle="outsideInset"
-        android:id="@+id/lv"
-        android:layout_marginTop="10dp">
-    </ListView>
+        android:id="@+id/rv"
+        style="@style/scrollbar_style"
+        android:layout_marginTop="10dp"
+    />
 
 </LinearLayout>
