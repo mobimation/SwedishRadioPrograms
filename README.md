@@ -1,9 +1,9 @@
 # SwedishRadioPrograms
 
-| col 1      | col 2      |
+| List View  | Detail view |
 |------------|-------------|
-| <img src="https://drive.google.com/file/d/1jxBWRFrzTccdU-vTztz4vQ1b_YkZTO8j/view?usp=sharing" width="250"> | <img src="https://drive.google.com/file/d/1Obj_zp99muvu44ZqxGGrHmwDr-oXsRbH/view?usp=sharing" width="250"> 
-
+| ![image](https://drive.google.com/uc?export=view&id=1jxBWRFrzTccdU-vTztz4vQ1b_YkZTO8j) | ![image](https://drive.google.com/uc?export=view&id=1Obj_zp99muvu44ZqxGGrHmwDr-oXsRbH) |
+ 
 Android app that lists Swedish Radio channel information and offers navigation.
 
 This represents results of a programming assignment to retrieve JSON data from the
