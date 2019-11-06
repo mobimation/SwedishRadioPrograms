@@ -13,44 +13,36 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+/**
+ * The ProgramAdapter adapts Program information entries to list view data.
+ * The internal ProgramViewHolder creates view data from retrieved text data.
+ */
+public class ProgramAdapter extends RecyclerView.Adapter< ProgramAdapter.ProgramViewHolder > {
 
-public class ContentAdapter extends RecyclerView.Adapter< ContentAdapter.ProgramViewHolder > {
-
-    private final List<ContentItem> items;
+    private final List<ProgramItem> items;
 
     public interface OnItemClickListener {
-        void onItemClick(ContentItem item);
+        void onItemClick(ProgramItem item);
     }
 
-    // The ItemViewHolder cache the views for a Program List entry.
-    // We create a class called ItemViewHolder that extends Recycler.ViewHolder
-    // We hold one TextView and one ImageView
+    /**
+     * The ProgramViewHolder caches the views for a Program List entry.
+     * We hold one TextView and one ImageView item
+     **/
     public class ProgramViewHolder extends RecyclerView.ViewHolder {
         final ImageView programImageView;
         final TextView  programNameView;
 
-        // Create a ProgramViewHolder constructor
+        // ProgramViewHolder constructor
         public ProgramViewHolder(View itemView) {
             super(itemView);
             this.programNameView  = itemView.findViewById(R.id.programName);
             this.programImageView = itemView.findViewById(R.id.image);
         }
-        // This bind operation instantiates itemView entries (loads images)
-        public void bind(final ContentItem item, final OnItemClickListener listener) {
-            this.programNameView.setText(item.getProgramName());
-            Picasso.get().load(item.getImageURL()).into(this.programImageView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    Log.d("gf","onClick");
-                    listener.onItemClick(item);
-                }
-            });
-        }
-
     }
 
     // Adapter constructor
-    public ContentAdapter(List<ContentItem> items, OnItemClickListener listener) {
+    public ProgramAdapter(List<ProgramItem> items, OnItemClickListener listener) {
         this.items = items;
     }
  
@@ -60,9 +52,9 @@ public class ContentAdapter extends RecyclerView.Adapter< ContentAdapter.Program
     }
     // TODO Move the DetailActivity launch to a more convenient place
     // onBindViewHolder fetches the Program image and sets up a click listener
-    // for browsing the detail page of a radio channel..
+    // for browsing the detail page of a radio channel (see DetailActivity).
     @Override public void onBindViewHolder(final ProgramViewHolder holder, final int position) {
-        final ContentItem item=items.get(position);
+        final ProgramItem item=items.get(position);
         holder.programNameView.setText(item.getProgramName());
         Picasso.get().load(item.getImageURL()).into(holder.programImageView);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -79,27 +71,5 @@ public class ContentAdapter extends RecyclerView.Adapter< ContentAdapter.Program
  
     @Override public int getItemCount() {
         return items.size();
-    }
- 
-    static class ViewHolder extends RecyclerView.ViewHolder {
- 
-        final TextView name;
-        final ImageView image;
- 
-        public ViewHolder(View itemView) {
-            super(itemView);
-            name = itemView.findViewById(R.id.programName);
-            image = itemView.findViewById(R.id.image);
-        }
- 
-        public void bind(final ContentItem item, final OnItemClickListener listener) {
-            name.setText(item.getProgramName());
-            Picasso.get().load(item.getImageURL()).into(image);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    listener.onItemClick(item);
-                }
-            });
-        }
     }
 }
